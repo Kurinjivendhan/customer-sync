@@ -26,12 +26,14 @@ def save_customers(customers):
     try:
         cursor= connection.cursor()
 
+        
+        
         query = """
             INSERT INTO customers (external_id, name, email)
             VALUES (%s, %s, %s)
             ON DUPLICATE KEY UPDATE
-                name = %s,
-                email = %s
+                name = VALUES(name),
+                email = VALUES(email)
         """
 
         values = []
@@ -41,12 +43,11 @@ def save_customers(customers):
                 customer["id"],
                 customer["name"],
                 customer["email"],
-                customer["name"],
-                customer["email"],
             ))
 
-        cursor.executemany(query,values)
+        cursor.executemany(query, values)
         connection.commit()
+
 
         return len(customers)
 

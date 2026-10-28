@@ -1,4 +1,20 @@
+
+# Environment secrets
 .env
+
+# Python virtual environment
 .venv/
+venv/
+
+# Python generated files
 __pycache__/
-*.pyc
+*.py[cod]
+
+# Test and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE settings
+.vscode/
+.idea/
