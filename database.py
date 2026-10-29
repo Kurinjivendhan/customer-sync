@@ -29,7 +29,7 @@ def save_customers(customers):
         
         
         query = """
-            INSERT INTO customers (external_id, name, email)
+            INSERT INTO customer (external_id, name, email)
             VALUES (%s, %s, %s)
             ON DUPLICATE KEY UPDATE
                 name = VALUES(name),
